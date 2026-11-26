@@ -1,7 +1,6 @@
 import { supabase } from './supabase.js';
 
 const userSafeFields = ['nom', 'prenom', 'telephone', 'email', 'username', 'role_id', 'statut', 'updated_at'];
-const PASSWORD_PLACEHOLDER = '__pending_auth__';
 
 function normalizeStatus(value) {
   const raw = String(value ?? '').trim().toLowerCase();
@@ -111,7 +110,6 @@ export async function createUserProfile(data = {}) {
 
   const record = {
     ...payload,
-    password: PASSWORD_PLACEHOLDER,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
     statut: normalizeStatus(payload.statut || 'actif')
