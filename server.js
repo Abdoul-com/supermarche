@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { pathToFileURL } from "node:url";
 import { createClient } from "@supabase/supabase-js";
 
 dotenv.config();
@@ -108,7 +109,15 @@ app.get("/api/dashboard", async (_req, res) => {
   });
 });
 
-if (process.env.NODE_ENV !== "test") {
+const isMainModule =
+  Boolean(process.argv[1]) &&
+  import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (
+  isMainModule &&
+  process.env.NODE_ENV !== "test" &&
+  !process.env.NODE_TEST_CONTEXT
+) {
   app.listen(port, () => {
     console.log(`API running on http://localhost:${port}`);
   });

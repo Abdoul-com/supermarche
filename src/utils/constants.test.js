@@ -9,8 +9,8 @@ test("navigation exposes only the simplified main modules", () => {
   assert.deepEqual(keys, [
     "dashboard",
     "produits",
-    "stock",
     "ventes",
+    "stock",
     "clients",
     "parametres",
   ]);
