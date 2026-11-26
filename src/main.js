@@ -4,7 +4,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 inject();
 import './styles/main.css';
-import Chart from 'chart.js/auto';
 import App from './App.js';
 import Login from './pages/Login.js';
 import { getDashboardData } from './services/dashboardService.js';
